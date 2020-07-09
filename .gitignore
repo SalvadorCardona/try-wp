@@ -25,3 +25,4 @@ web/.htaccess
 wp-cli.local.yml
 
 /front/node_modules
+/front/node_modules/*
