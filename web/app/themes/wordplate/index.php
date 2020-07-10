@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main role="main">
+<main id="wp-content" role="main">
     <app-root></app-root>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <article>

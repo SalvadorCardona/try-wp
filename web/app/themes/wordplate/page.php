@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-    <main role="main">
-        <app-root>
+    <main id="wp-content" role="main">
+
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <article>
                 <header>
@@ -16,7 +16,7 @@
                 <p>Nothing to see.</p>
             </article>
         <?php endif; ?>
-        </app-root>
+
     </main>
 
 <?php get_footer();

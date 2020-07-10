@@ -7,6 +7,6 @@ class App
 {
     public function __construct()
     {
-        echo 'test';
+        echo "test";
     }
 }
