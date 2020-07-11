@@ -1,0 +1,27 @@
+@import "~assets/styles/variables";
+
+:host {
+  border-bottom: 1px solid $greyLess4;
+  padding: 0 20rem;
+  .logo {
+    img {
+      height: 40px;
+      width: auto;
+    }
+  }
+  .menu {
+    ul {
+      margin: 0;
+      height: 100%;
+      li {
+        display: inline-block;
+        padding: 15px;
+        font-weight: bold;
+        a:hover {
+          color: lighten($grey, 40%);
+          transition: all 0.4s ease-in-out 0s;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../../../assets/styles/variables";
+
+:host {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid $greyLess4;
+  padding: 1px 20rem;
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    padding: 12px;
+    margin: 0;
+    li {
+      color: $greyLess2;
+      font-size: 12px;
+      display: inline-block;
+      padding: 0 15px 0 15px;
+      border-right: 1px solid $greyLess2;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}

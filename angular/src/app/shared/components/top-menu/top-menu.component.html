@@ -1,0 +1,14 @@
+<nav class="row" role="navigation" id="wrapper-menu" *ngIf="menu">
+  <div  class="logo d-flex col-3 align-items-center">
+    <img [src]="'images/dark-logo.png'|asset" alt="logo">
+  </div>
+  <div class="col-9 menu">
+    <ul class="d-flex align-items-center">
+      <li *ngFor="let menuItem of menu">
+        <a [routerLink]="'post/{id}'">
+          {{menuItem.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
