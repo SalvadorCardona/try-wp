@@ -8,6 +8,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./modules/post/post.module').then(mod => mod.PostModule),
     data: { preload: false }
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./modules/post/post.module').then(mod => mod.PostModule),
+    data: { preload: false }
   }
 ];
 

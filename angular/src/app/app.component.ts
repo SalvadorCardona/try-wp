@@ -30,7 +30,6 @@ export class AppComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-    console.log("sqdsqda")
     if (this.post) {
       this.postService.setPost(this.post);
       if (this.isHome) {
