@@ -13,7 +13,7 @@
     <script src="http://localhost:4200/main.js" type="module"></script></body>
 
     <style type="text/css">
-        #wp-content {
+        #wp-content, #wp-header {
             display: none;
         }
     </style>
@@ -22,9 +22,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <header>
+    <header id="wp-header">
         <nav role="navigation">
             <?php wp_nav_menu(['theme_location' => 'navigation']); ?>
         </nav>
     </header>
-<app-root isHome="<?php echo json_encode(is_home()) ?>" post='<?php echo esc_html(json_encode($post->to_array())) ?>'></app-root>
+<app-root class="container-fluid" isHome="<?php echo json_encode(is_home()) ?>" post='<?php echo esc_html(json_encode($post->to_array())) ?>'></app-root>
