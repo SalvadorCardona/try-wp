@@ -23,7 +23,7 @@ add_action('rest_api_init', function () {
         'blocking' => true
     ));
 
-    register_rest_route('wp/v2', 'menu', array(
+    register_rest_route('wp/v2', 'translation', array(
         'methods' => 'GET',
         'callback' => fn() => json_encode($l10n['entries']),
         'body' => array(),

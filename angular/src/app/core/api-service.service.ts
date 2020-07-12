@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import {ApiWp} from "@app/core/api-wp";
+import {BaseApiWp} from "@app/core/base-api-wp";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
-  _api: ApiWp;
+  _api: BaseApiWp;
   constructor() {
-    this._api = new ApiWp();
+    this._api = new BaseApiWp();
   }
 
-  get api(): ApiWp {
+  get api(): BaseApiWp {
     return this._api;
   }
 }
