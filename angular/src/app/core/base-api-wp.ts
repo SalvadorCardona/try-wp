@@ -378,6 +378,26 @@ export class BaseApiWp<SecurityDataType = any> extends HttpClient<SecurityDataTy
         true,
       ),
 
+
+    /**
+     * @tags endpoint
+     * @name v2Menu
+     * @request GET:/wp/v2/post/{name}/slug
+     * @secure
+     * @originalName v2Menu
+     * @duplicate
+     */
+    v2PostByName: (name: string) => this.request<any, any>('/wp/v2/post/' + name + '/slug', "GET"),
+
+    /**
+     * @tags endpoint
+     * @name v2Menu
+     * @request GET:/wp/v2/post/{id}/all
+     * @secure
+     * @originalName v2Menu
+     * @duplicate
+     */
+    v2PostAllById: (id: number) => this.request<any, any>('/wp/v2/post/' + id + '/all', "GET"),
     /**
      * @tags endpoint
      * @name v2PostsDelete

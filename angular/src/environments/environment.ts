@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   host: 'localhost:4200',
+  api: 'http://localhost:8000',
   apiEndpoint: 'http://localhost:8000/wp-json/wp/v2',
   idHomePage: 2
-
 };
 
 /*

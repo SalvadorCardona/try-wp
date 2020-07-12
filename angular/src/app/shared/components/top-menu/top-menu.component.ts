@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiServiceService} from "@app/core/api-service.service";
 import {IPost} from "@app/types/post.type";
-import {keysToCamel} from "@app/shared/helpers/helper";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-top-menu',
@@ -15,8 +15,14 @@ export class TopMenuComponent implements OnInit {
   ngOnInit(): void {
     this.apiServiceService.api.wp.v2Menu()
       .then((response: Object) => {
+        console.log(response)
         this.menu =  Object.keys(response).map(keys => response[keys]);
       })
       .catch(e => console.log(e));
+  }
+
+  sanitizeUrl(url: string): string
+  {
+    return url.replace(environment.api + '/', '');
   }
 }

@@ -5,7 +5,7 @@
   <div class="col-9 menu">
     <ul class="d-flex align-items-center">
       <li *ngFor="let menuItem of menu">
-        <a [routerLink]="'post/{id}'">
+        <a [routerLink]="sanitizeUrl(menuItem.url)">
           {{menuItem.title}}
         </a>
       </li>
