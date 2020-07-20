@@ -3,7 +3,6 @@ import {IPost} from "@app/types/post.type";
 import {PostService} from "@app/shared/stores/state/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
-import {ApiWp} from "@app/core/api-wp";
 import {ApiServiceService} from "@app/core/api-service.service";
 
 @Component({

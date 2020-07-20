@@ -29,4 +29,20 @@ add_action('rest_api_init', function () {
         'body' => array(),
         'blocking' => true
     ));
+
+    register_rest_route('wp/v2', 'post/(?P<name>[^/]+)/slug', array(
+        'methods' => 'GET',
+        'callback' => function ($param) {
+            global $wpdb;
+            $post = $wpdb->get_var($wpdb->prepare("
+                SELECT ID FROM $wpdb->posts WHERE post_name = %s", $param->get_param('name')));
+            if ($post) {
+                return get_post($post, OBJECT);
+            }
+
+            return null;
+        },
+        'body' => array(),
+        'blocking' => true
+    ));
 });
