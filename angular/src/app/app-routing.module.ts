@@ -4,12 +4,17 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/post/post.module').then(mod => mod.PostModule),
+    loadChildren: () => import('./modules/page/page.module').then(mod => mod.PageModule),
+    data: { preload: false }
+  },
+  {
+    path: 'product/:slug',
+    loadChildren: () => import('./modules/page/page.module').then(mod => mod.PageModule),
     data: { preload: false }
   },
   {
     path: '**',
-    loadChildren: () => import('./modules/post/post.module').then(mod => mod.PostModule),
+    loadChildren: () => import('./modules/page/page.module').then(mod => mod.PageModule),
     data: { preload: false }
   }
 ];

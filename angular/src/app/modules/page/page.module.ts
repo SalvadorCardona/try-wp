@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewsComponent } from './views/views.component';
 import {RouterModule, Routes} from "@angular/router";
+import { ViewsComponent } from './views/views.component';
 
 const routes: Routes = [
   {
@@ -17,4 +17,4 @@ const routes: Routes = [
     CommonModule
   ]
 })
-export class HomeModule { }
+export class PageModule { }

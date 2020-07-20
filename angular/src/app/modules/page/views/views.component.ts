@@ -24,13 +24,15 @@ export class ViewsComponent implements OnInit {
 
   ngOnInit(): void {
     let request;
+
+    let slug = this.route.snapshot.paramMap.get('slug') || this.router.url.substring(1, this.router.url.length);
+
     if (this.router.url === '/') {
        request = this.apiService.api.wp.v2PostAllById(environment.idHomePage);
     } else {
-       request = this.apiService.api.wp.v2PostByName(
-        this.router.url.substring(1, this.router.url.length)
-      );
+        request = this.apiService.api.wp.v2PostByName(slug);
     }
+
     request.then(response => {
       this.post = response
     });

@@ -45,4 +45,20 @@ add_action('rest_api_init', function () {
         'body' => array(),
         'blocking' => true
     ));
+
+    register_rest_route('wp/v2', 'post/(?P<id>\d+)/all', array(
+        'methods' => 'GET',
+        'callback' => function ($param) {
+            global $wpdb;
+            $post = $wpdb->get_var($wpdb->prepare("
+                SELECT ID FROM $wpdb->posts WHERE id = %d", $param->get_param('id')));
+            if ($post) {
+                return get_post($post, OBJECT);
+            }
+
+            return null;
+        },
+        'body' => array(),
+        'blocking' => true
+    ));
 });
