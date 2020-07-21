@@ -1,0 +1,11 @@
+@import "~assets/styles/variables";
+
+:host {
+  #top-footer {
+    text-align: center;
+    background: $greyLess5;
+    b {
+      display: block;
+    }
+  }
+}

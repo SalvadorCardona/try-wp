@@ -4,7 +4,7 @@ import {TopMenuComponent} from "@app/shared/components/top-menu/top-menu.compone
 import {RouterModule} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 import { TopHeaderComponent } from './components/top-header/top-header.component';
-import { AssetPipe } from './pipe/asset.pipe';
+import {AssetPipe} from "@app/shared/pipes/asset.pipe";
 import { FooterComponent } from './components/footer/footer.component';
 
 
@@ -13,7 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [
     TopMenuComponent,
     TranslateModule,
-    TopHeaderComponent
+    TopHeaderComponent,
+    FooterComponent
   ],
     imports: [
         CommonModule,

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {IPost} from "@app/types/post.type";
+import {IPost} from "@app/shared/models/post.type";
 import {PostService} from "@app/shared/stores/state/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
-import {ApiServiceService} from "@app/core/api-service.service";
+import {ApiService} from "@app/core/api.service";
 
 @Component({
   selector: 'app-views',
@@ -19,7 +19,7 @@ export class ViewsComponent implements OnInit {
     private postService: PostService,
     private router: Router,
     private route: ActivatedRoute,
-    private apiService: ApiServiceService
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {

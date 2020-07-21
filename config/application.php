@@ -8,7 +8,9 @@
  * can.
  */
 
+use _HumbugBox69342eed62ce\Nette\DI\ContainerBuilder;
 use Roots\WPConfig\Config;
+use Slim\Factory\AppFactory;
 
 /**
  * Directory containing all of the site's files
@@ -132,3 +134,7 @@ Config::apply();
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+$containerBuilder = new ContainerBuilder();
+
+$app = AppFactory::create();

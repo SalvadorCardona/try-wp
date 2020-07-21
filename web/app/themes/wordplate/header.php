@@ -27,4 +27,4 @@
             <?php wp_nav_menu(['theme_location' => 'navigation']); ?>
         </nav>
     </header>
-<app-root class="container-fluid" isHome="<?php echo json_encode(is_home()) ?>" post='<?php echo esc_html(json_encode($post->to_array())) ?>'></app-root>
+<app-root></app-root>

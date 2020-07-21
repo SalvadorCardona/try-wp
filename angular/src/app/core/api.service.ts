@@ -4,7 +4,7 @@ import {BaseApiWp} from "@app/core/base-api-wp";
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService {
+export class ApiService {
   _api: BaseApiWp;
   constructor() {
     this._api = new BaseApiWp();

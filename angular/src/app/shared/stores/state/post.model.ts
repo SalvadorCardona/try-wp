@@ -1,4 +1,4 @@
-import {IPost} from "@app/types/post.type";
+import {IPost} from "@app/shared/models/post.type";
 
 export function createPost(params: Partial<IPost>) {
   return {
