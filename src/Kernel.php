@@ -7,6 +7,6 @@ class Kernel
 {
     public function __construct()
     {
-        echo "test";
+        echo "eetest";
     }
 }
