@@ -8,7 +8,9 @@
  * can.
  */
 
-use _HumbugBox69342eed62ce\Nette\DI\ContainerBuilder;
+use App\Kernel;
+use DI\Bridge\Slim\Bridge;
+use DI\ContainerBuilder;
 use Roots\WPConfig\Config;
 use Slim\Factory\AppFactory;
 
@@ -136,5 +138,13 @@ if (!defined('ABSPATH')) {
 }
 
 $containerBuilder = new ContainerBuilder();
+$containerBuilder->useAutowiring(true);
+$dependencies = require __DIR__ . '/dependencies.php';
 
-$app = AppFactory::create();
+$dependencies($containerBuilder);
+
+$container = $containerBuilder->build();
+
+$app = Bridge::create($container);
+
+Kernel::setAPP($app);
