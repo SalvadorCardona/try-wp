@@ -27,3 +27,5 @@ wp-cli.local.yml
 /angular/node_modules
 /angular/node_modules/*
 /angular/dist
+
+.idea/**
