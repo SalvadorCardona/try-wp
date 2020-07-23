@@ -3,15 +3,19 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use wpdb;
+
 class WordpressService
 {
-    /**
-     * @var EventService
-     */
-    private EventService $eventService;
-
-    public function __construct(EventService $eventService)
+    public function getWpdb(): wpdb
     {
-        $this->eventService = $eventService;
+        global $wpdb;
+        return $wpdb;
+    }
+
+    public function getI18n(): array
+    {
+        global $i18n;
+        return $i18n;
     }
 }

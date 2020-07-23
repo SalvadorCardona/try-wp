@@ -10,8 +10,7 @@
     <script src="http://localhost:4200/polyfills.js" type="module"></script>
     <script src="http://localhost:4200/styles.js" type="module"></script>
     <script src="http://localhost:4200/vendor.js" type="module"></script>
-    <script src="http://localhost:4200/main.js" type="module"></script></body>
-
+    <script src="http://localhost:4200/main.js" type="module"></script>
     <style type="text/css">
         #wp-content, #wp-header {
             display: none;
