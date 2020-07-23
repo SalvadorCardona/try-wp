@@ -16,7 +16,7 @@ abstract class AbstractApi implements ApiInterface
 
     public function init(WP_REST_Request $request = null)
     {
-        $this->setRequest($request);
+        $this->request = $request;
         return $this->action();
     }
 
@@ -69,19 +69,4 @@ abstract class AbstractApi implements ApiInterface
         return $this->namespace;
     }
 
-    /**
-     * @return WP_REST_Request|null
-     */
-    public function getRequest(): ?WP_REST_Request
-    {
-        return $this->request;
-    }
-
-    /**
-     * @param WP_REST_Request|null $request
-     */
-    public function setRequest(?WP_REST_Request $request): void
-    {
-        $this->request = $request;
-    }
 }

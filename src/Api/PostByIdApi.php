@@ -25,7 +25,7 @@ class PostByIdApi extends AbstractApi
         $wpdb = $this->wordpressService->getWpdb();
 
         $post = $wpdb->get_var($wpdb->prepare("
-                SELECT ID FROM $wpdb->posts WHERE id = %d", $this->getRequest()->get_param('id')));
+                SELECT ID FROM $wpdb->posts WHERE id = %d", $this->request->get_param('id')));
         if ($post) {
             return get_post($post, ARRAY_A);
         }

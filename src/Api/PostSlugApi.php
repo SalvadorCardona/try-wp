@@ -25,7 +25,7 @@ class PostSlugApi extends AbstractApi
         $wpdb = $this->wordpressService->getWpdb();
 
         $post = $wpdb->get_var($wpdb->prepare("
-                SELECT ID FROM $wpdb->posts WHERE post_name = %s", $this->getRequest()->get_param('name')));
+                SELECT ID FROM $wpdb->posts WHERE post_name = %s", $this->request->get_param('name')));
         if ($post) {
             return get_post($post, ARRAY_A);
         }
