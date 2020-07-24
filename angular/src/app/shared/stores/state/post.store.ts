@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { IPost } from "@app/shared/models/post.type";
+import { IPost } from "@app/shared/models/post.model";
 
 export interface PostState extends EntityState<IPost> {}
 

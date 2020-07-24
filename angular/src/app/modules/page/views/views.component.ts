@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IPost} from '@app/shared/models/post.type';
+import {IPost} from '@app/shared/models/post.model';
 import {PostService} from '@app/shared/stores/state/post.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../../environments/environment';
