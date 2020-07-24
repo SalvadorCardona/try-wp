@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Helper;
 
 use wpdb;
 
-class WordpressService
+class WordpressHelper
 {
-    public function getWpdb(): wpdb
+    public static function getWpdb(): wpdb
     {
+        /** @var wpdb */
         global $wpdb;
         return $wpdb;
     }
 
-    public function getI18n(): array
+    public static function getI18n(): array
     {
         global $i18n;
         return $i18n;

@@ -9,10 +9,10 @@
  */
 
 use App\Kernel;
+use App\Model\Config as ConfigModel;
 use DI\Bridge\Slim\Bridge;
 use DI\ContainerBuilder;
 use Roots\WPConfig\Config;
-use Slim\Factory\AppFactory;
 
 /**
  * Directory containing all of the site's files
@@ -142,6 +142,13 @@ $containerBuilder->useAutowiring(true);
 $dependencies = require __DIR__ . '/dependencies.php';
 
 $dependencies($containerBuilder);
+
+$containerBuilder->addDefinitions(
+    [
+        ConfigModel::ACTION => require __DIR__ . '/actions.php',
+        ConfigModel::API => require __DIR__ . '/apis.php',
+    ]
+);
 
 $container = $containerBuilder->build();
 

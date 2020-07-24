@@ -1,18 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Action;
 
-use App\Api\AbstractApi;
 use App\Api\ApiInterface;
-use App\Api\MenuApi;
-use App\Api\PostByIdApi;
-use App\Api\PostSlugApi;
-use App\Api\TranslationApi;
+use App\Model\Config;
 use DI\Container;
 use Exception;
 
-class ApiLoaderService
+class ApiLoaderAction implements ActionInterface
 {
 
     private array $apis;
@@ -21,20 +18,10 @@ class ApiLoaderService
     public function __construct(Container $container)
     {
         $this->container = $container;
-
-        /**
-         * TODO: Replace the content of this array by a configuration
-         */
-        $this->apis = [
-            PostSlugApi::class,
-            MenuApi::class,
-            PostByIdApi::class,
-            PostSlugApi::class,
-            TranslationApi::class
-        ];
+        $this->apis = $container->get(Config::API);
     }
 
-    public function registerApis(): void
+    public function action(): void
     {
         foreach ($this->apis as $apiClass) {
             try {
@@ -47,7 +34,7 @@ class ApiLoaderService
                     'blocking' => $api->isBlocking()
                 ));
             } catch (Exception $e) {
-                 continue;
+                continue;
             }
         }
     }
