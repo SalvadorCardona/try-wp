@@ -4,25 +4,15 @@ declare(strict_types=1);
 
 namespace App\Api;
 
-use App\Service\WordpressService;
-use WP_REST_Request;
+use App\Helper\WordpressHelper;
 
 class PostByIdApi extends AbstractApi
 {
-    protected string $endPoint = 'post/(?P<name>[^/]+)/slug';
-    /**
-     * @var WordpressService
-     */
-    private WordpressService $wordpressService;
-
-    public function __construct(WordpressService $wordpressService)
-    {
-        $this->wordpressService = $wordpressService;
-    }
+    protected string $endPoint = 'post/(?P<id>\d+)/all';
 
     public function action(): ?array
     {
-        $wpdb = $this->wordpressService->getWpdb();
+        $wpdb = WordpressHelper::getWpdb();
 
         $post = $wpdb->get_var($wpdb->prepare("
                 SELECT ID FROM $wpdb->posts WHERE id = %d", $this->request->get_param('id')));
