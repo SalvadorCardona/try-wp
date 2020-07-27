@@ -7,7 +7,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
-import { environment } from '../environments/environment';
+import { environment } from '@env/environment';
 import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({

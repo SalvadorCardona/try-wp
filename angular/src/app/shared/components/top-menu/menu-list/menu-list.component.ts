@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from "@app/shared/models/post.model";
-import {environment} from "../../../../../environments/environment";
+import {environment} from '@env/environment';
+import {Menu} from '@app/shared/models/menu.model';
 
 @Component({
   selector: 'app-menu-list',
@@ -10,20 +10,18 @@ import {environment} from "../../../../../environments/environment";
         <a [routerLink]="sanitizeUrl(menuItem.url)">
           {{menuItem.title}}
         </a>
+        <div class="children" *ngIf="menuItem.children">
+          <app-menu-list [menu]="menuItem.children"></app-menu-list>
+        </div>
       </li>
     </ul>
   `,
 })
 export class MenuListComponent implements OnInit {
-  @Input() menu: Post[];
-
+  @Input() menu: Menu[];
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getChildren(childrenId: string): Array<Post> {
-    return this.menu.filter(itemMenu => itemMenu.menuItemParent === childrenId);
   }
 
   sanitizeUrl(url: string): string

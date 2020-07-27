@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {IPost} from '@app/shared/models/post.model';
-import {PostService} from '@app/shared/stores/state/post.service';
+import {Post} from '@app/shared/models/post.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {environment} from '../../../../environments/environment';
+import {environment} from '@env/environment';
 import {ApiService} from '@app/core/api.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 
@@ -13,11 +12,10 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class ViewsComponent implements OnInit {
 
-  post: IPost|null = null;
+  post: Post|null = null;
   postId: number|null;
 
   constructor(
-    private postService: PostService,
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,

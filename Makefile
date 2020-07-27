@@ -10,7 +10,7 @@ install-php:
 install-js:
 	cd angular && yarn install
 
-dev-server:
+server-dev:
 	/bin/sh -c 'php -S localhost:8000 -t web &'
 	/bin/sh -c 'cd angular && yarn start'
 

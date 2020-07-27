@@ -8,7 +8,7 @@ export class Post {
   filter: string;
   guid: string;
   id: number;
-  menuItemParent: string;
+  menuItemParent: number|null;
   menuOrder: number;
   object: string;
   objectId: string;
@@ -38,10 +38,12 @@ export class Post {
   xfn: string;
 
   public constructor(data) {
-    Object.assign(this, data);
-  }
+    if (data.menuItemParent) {
+      // tslint:disable-next-line:radix
+      data.menuItemParent = data.menuItemParent === '0' ? null  : parseInt(String(data.menuItemParent));
+    }
 
-  hasChildren() {
-    return this.menuItemParent != '0';
+    Object.assign(this, data);
+
   }
 }
