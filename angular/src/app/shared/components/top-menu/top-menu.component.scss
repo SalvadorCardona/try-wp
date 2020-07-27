@@ -20,7 +20,23 @@
           color: lighten($grey, 40%);
           transition: all 0.4s ease-in-out 0s;
         }
+
+      }
+    }
+  }
+  ::ng-deep {
+    li {
+      .children {
+        display: none;
+      }
+      &:hover {
+        .children {
+          display: block;
+        }
       }
     }
   }
 }
+
+
+

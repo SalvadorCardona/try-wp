@@ -13,6 +13,7 @@
     "target": "es2015",
     "paths": {
       "@app/*": ["./app/*"],
+      "@env/*": ["./environments/*"],
       "@app-style/*": ["./assets/styles/*"]
     },
     "lib": [

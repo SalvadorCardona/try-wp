@@ -3,12 +3,6 @@
     <img [src]="'images/dark-logo.png'|asset" alt="logo">
   </div>
   <div class="col-9 menu">
-    <ul class="d-flex align-items-center">
-      <li *ngFor="let menuItem of menu">
-        <a [routerLink]="sanitizeUrl(menuItem.url)">
-          {{menuItem.title}}
-        </a>
-      </li>
-    </ul>
+    <app-menu-list [menu]="menu"></app-menu-list>
   </div>
 </nav>
