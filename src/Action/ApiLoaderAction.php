@@ -6,26 +6,23 @@ namespace App\Action;
 
 use App\Api\ApiInterface;
 use Exception;
-use Psr\Container\ContainerInterface;
 
 class ApiLoaderAction implements ActionInterface
 {
-
+    /**
+     * @var ApiInterface[]
+     */
     private array $apis;
-    private ContainerInterface $container;
 
-    public function __construct(ContainerInterface $container, array $apis)
+    public function addApi(ApiInterface $api): void
     {
-        $this->container = $container;
-        $this->apis = $apis;
+        $this->apis []= $api;
     }
 
     public function __invoke(): void
     {
-        foreach ($this->apis as $apiClass) {
+        foreach ($this->apis as $api) {
             try {
-                /** @var ApiInterface $api */
-                $api = $this->container->get($apiClass);
                 $this->addRouting($api);
             } catch (Exception $e) {
                 continue;

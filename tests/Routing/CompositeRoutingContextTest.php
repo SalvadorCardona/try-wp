@@ -4,6 +4,9 @@ namespace Routing;
 
 use App\Routing\CompositeRoutingContext;
 use App\Routing\Contexts\PostContext;
+use App\Routing\Contexts\ProductContext;
+use App\Routing\Contexts\SearchContext;
+use App\Routing\Contexts\TaxomanyContext;
 use App\Routing\Routing;
 use App\Routing\RoutingContextNotFoundException;
 use PHPUnit\Framework\TestCase;
@@ -11,14 +14,11 @@ use PHPUnit\Framework\TestCase;
 class CompositeRoutingContextTest extends TestCase
 {
     /**
-     * @param PostContext $postContext
      * @return CompositeRoutingContext
      */
-    public function compositeRoutingContextFactory(PostContext $postContext): CompositeRoutingContext
+    public function compositeRoutingContextFactory(): CompositeRoutingContext
     {
-        return new CompositeRoutingContext(
-            $postContext
-        );
+        return new CompositeRoutingContext();
     }
 
     public function testCompositeRoutingContextOnError(): void
@@ -28,9 +28,9 @@ class CompositeRoutingContextTest extends TestCase
                 throw new RoutingContextNotFoundException();
         });
 
-        $compositeRoutingContext = $this->compositeRoutingContextFactory(
-            $postContext
-        );
+        $compositeRoutingContext = $this->compositeRoutingContextFactory();
+
+        $compositeRoutingContext->addRoutingContext($postContext);
 
         $error = false;
 
@@ -49,9 +49,8 @@ class CompositeRoutingContextTest extends TestCase
         $postContext = $this->createMock(PostContext::class);
         $postContext->method('getRoutingByRoute')->willReturn($routing);
 
-        $compositeRoutingContext = $this->compositeRoutingContextFactory(
-            $postContext
-        );
+        $compositeRoutingContext = $this->compositeRoutingContextFactory();
+        $compositeRoutingContext->addRoutingContext($postContext);
 
         $this->assertInstanceOf(Routing::class, $compositeRoutingContext->getRouting('route'));
     }

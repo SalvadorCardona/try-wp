@@ -140,12 +140,7 @@ if (!defined('ABSPATH')) {
 $containerBuilder = new ContainerBuilder();
 $containerBuilder->useAutowiring(true);
 
-$containerBuilder->addDefinitions(
-    [
-        ConfigModel::ACTION => require __DIR__ . '/actions.php',
-        ConfigModel::API => require __DIR__ . '/apis.php'
-    ]
-);
+$containerBuilder->addDefinitions(require __DIR__ . '/configuration.php');
 
 $services = require __DIR__ . '/services.php';
 $services($containerBuilder);
