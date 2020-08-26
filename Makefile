@@ -25,3 +25,6 @@ database-import:
 
 trans:
 	ngx-translate-extract --input ./web/app/languages --output ./angular/src/assets/i18n/{en,da,de,fi,nb,nl,sv}.json --clean --format json
+
+test:
+	php vendor/bin/phpunit

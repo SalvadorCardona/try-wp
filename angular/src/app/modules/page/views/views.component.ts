@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '@app/shared/models/post.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {environment} from '@env/environment';
 import {ApiService} from '@app/core/api.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 
@@ -23,18 +22,13 @@ export class ViewsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let request;
     this.spinner.show();
     const slug = this.route.snapshot.paramMap.get('slug') || this.router.url.substring(1, this.router.url.length);
 
-    if (this.router.url === '/') {
-       request = this.apiService.api.wp.v2PostAllById(environment.idHomePage);
-    } else {
-        request = this.apiService.api.wp.v2PostByName(slug);
-    }
+    const request = this.apiService.getRouting(slug);
 
-    request.then(response => {
-      this.post = response;
+    request.subscribe(routing => {
+      this.post = routing.content;
       this.spinner.hide();
     });
   }

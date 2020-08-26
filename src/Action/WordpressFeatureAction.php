@@ -7,7 +7,7 @@ namespace App\Action;
 class WordpressFeatureAction implements ActionInterface
 {
 
-    public function action(): void
+    public function __invoke(): void
     {
             add_theme_support('post-thumbnails');
 

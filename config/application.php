@@ -139,16 +139,11 @@ if (!defined('ABSPATH')) {
 
 $containerBuilder = new ContainerBuilder();
 $containerBuilder->useAutowiring(true);
-$dependencies = require __DIR__ . '/dependencies.php';
 
-$dependencies($containerBuilder);
+$containerBuilder->addDefinitions(require __DIR__ . '/configuration.php');
 
-$containerBuilder->addDefinitions(
-    [
-        ConfigModel::ACTION => require __DIR__ . '/actions.php',
-        ConfigModel::API => require __DIR__ . '/apis.php',
-    ]
-);
+$services = require __DIR__ . '/services.php';
+$services($containerBuilder);
 
 $container = $containerBuilder->build();
 

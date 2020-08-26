@@ -1,4 +1,9 @@
-export class Post {
+export interface IPost {
+  menuItemParent: null|number;
+  id: number;
+}
+
+export class Post implements IPost {
   attrTitle: string;
   classes: string;
   commentCount: string;
@@ -8,7 +13,7 @@ export class Post {
   filter: string;
   guid: string;
   id: number;
-  menuItemParent: number|null;
+  menuItemParent: null|number;
   menuOrder: number;
   object: string;
   objectId: string;
@@ -37,13 +42,16 @@ export class Post {
   url: string;
   xfn: string;
 
-  public constructor(data) {
-    if (data.menuItemParent) {
-      // tslint:disable-next-line:radix
-      data.menuItemParent = data.menuItemParent === '0' ? null  : parseInt(String(data.menuItemParent));
-    }
-
-    Object.assign(this, data);
-
+  public constructor() {
   }
+}
+
+export function createPost(params: Partial<Post>): Post {
+  if (params.menuItemParent) {
+    // @ts-ignore
+    // tslint:disable-next-line:radix
+    params.menuItemParent = parseInt(params.menuItemParent);
+  }
+
+  return Object.assign(new Post(), params);
 }
