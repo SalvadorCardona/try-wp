@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ApiService} from "@app/core/api.service";
+import {ActivatedRoute} from '@angular/router';
+import {ApiService} from '@app/core/api.service';
 
 @Component({
   selector: 'app-container',
@@ -14,9 +14,9 @@ export class ContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.category = params.get("category")
-      this.apiService.api.wp.v2CategoriesList({slug: this.category})
-        .then(result => console.log(result))
-    })
+      this.category = params.get('category');
+      this.apiService.wpApi.wp.v2CategoriesList({slug: this.category})
+        .then(result => console.log(result));
+    });
   }
 }

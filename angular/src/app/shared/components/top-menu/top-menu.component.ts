@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '@app/core/api.service';
 import {Menu, MenuFactory} from '@app/shared/models/menu.model';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-top-menu',
@@ -12,13 +13,8 @@ export class TopMenuComponent implements OnInit {
   constructor(private apiServiceService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiServiceService.api.wp.v2Menu()
-      // tslint:disable-next-line:ban-types
-      .then((response: Object) => {
-        this.menu = MenuFactory(
-          Object.keys(response).map(keys => response[keys])
-        );
-      })
-      .catch(e => console.log(e));
+    this.apiServiceService
+      .getMenu()
+      .subscribe(menu => this.menu = menu);
   }
 }

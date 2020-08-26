@@ -5,37 +5,41 @@ declare(strict_types=1);
 namespace App\Action;
 
 use App\Api\ApiInterface;
-use App\Model\Config;
-use DI\Container;
 use Exception;
+use Psr\Container\ContainerInterface;
 
 class ApiLoaderAction implements ActionInterface
 {
 
     private array $apis;
-    private Container $container;
+    private ContainerInterface $container;
 
-    public function __construct(Container $container)
+    public function __construct(ContainerInterface $container, array $apis)
     {
         $this->container = $container;
-        $this->apis = $container->get(Config::API);
+        $this->apis = $apis;
     }
 
-    public function action(): void
+    public function __invoke(): void
     {
         foreach ($this->apis as $apiClass) {
             try {
                 /** @var ApiInterface $api */
                 $api = $this->container->get($apiClass);
-                register_rest_route($api->getNamespace(), $api->getEndPoint(), array(
-                    'methods' => $api->getMethod(),
-                    'callback' => [$api, 'init'],
-                    'body' => $api->getBody(),
-                    'blocking' => $api->isBlocking()
-                ));
+                $this->addRouting($api);
             } catch (Exception $e) {
                 continue;
             }
         }
+    }
+
+    private function addRouting(ApiInterface $api)
+    {
+        register_rest_route($api->getNamespace(), $api->getEndPoint(), [
+            'methods' => $api->getMethod(),
+            'callback' => [$api, 'init'],
+            'body' => $api->getBody(),
+            'blocking' => $api->isBlocking()
+        ]);
     }
 }

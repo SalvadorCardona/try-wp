@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Api\MenuApi;
 use App\Api\PostByIdApi;
 use App\Api\PostSlugApi;
+use App\Api\RoutingApi;
 use App\Api\TranslationApi;
 
 return [
@@ -12,5 +13,6 @@ return [
     MenuApi::class,
     PostByIdApi::class,
     PostSlugApi::class,
-    TranslationApi::class
+    TranslationApi::class,
+    RoutingApi::class
 ];

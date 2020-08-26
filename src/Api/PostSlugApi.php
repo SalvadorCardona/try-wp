@@ -10,7 +10,7 @@ class PostSlugApi extends AbstractApi
 {
     protected string $endPoint = 'post/(?P<name>[^/]+)/slug';
 
-    public function action(): ?array
+    public function __invoke(): ?array
     {
         $wpdb = WordpressHelper::getWpdb();
 

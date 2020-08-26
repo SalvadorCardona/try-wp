@@ -6,5 +6,5 @@ namespace App\Action;
 
 interface ActionInterface
 {
-    public function action(): void;
+    public function __invoke(): void;
 }

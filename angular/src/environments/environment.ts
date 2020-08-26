@@ -6,8 +6,13 @@ export const environment = {
   production: false,
   host: 'localhost:4200',
   api: 'http://localhost:8000',
-  apiEndpoint: 'http://localhost:8000/wp-json/wp/v2',
-  idHomePage: 2
+  apiEndpoint: 'http://localhost:8000/wp-json',
+  idHomePage: 2,
+  apiEndpoints: {
+    routing: 'wp/app/routing/{route}',
+    menu: 'wp/app/menu',
+    post: 'wp/app/post/{id}'
+  }
 };
 
 /*

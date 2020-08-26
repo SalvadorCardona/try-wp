@@ -7,4 +7,5 @@ class Config
 {
     public const ACTION = 'action';
     public const API = 'api';
+    public const SERVICES = 'services';
 }

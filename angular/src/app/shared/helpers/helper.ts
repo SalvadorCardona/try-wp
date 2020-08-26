@@ -1,6 +1,6 @@
 import { isObject, isArray, camelCase } from "lodash";
 
-export const keysToCamel = function (o) {
+export const keysToCamel = (o: any) => {
   if (isObject(o)) {
     const n = {};
 

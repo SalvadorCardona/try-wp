@@ -1,13 +1,24 @@
-import {Post} from '@app/shared/models/post.model';
+import {createPost, IPost, Post} from '@app/shared/models/post.model';
 
 export class Menu extends Post {
   children: Menu[]|null = null;
 }
 
-export const MenuFactory = (dataBase: Menu[]): Menu[] => {
-  const data = dataBase.map(item => new Menu(item));
-  console.log(data);
-  const menuMaker = (level = 0, parentId = null): Menu[] => {
+export function createMenu(params: Partial<Menu>): Menu {
+  if (params.menuItemParent) {
+    // @ts-ignore
+    // tslint:disable-next-line:radix
+    params.menuItemParent = parseInt(params.menuItemParent);
+  }
+
+  return Object.assign(new Menu(), params);
+}
+
+export const MenuFactory = (param: Partial<Menu[]>): Menu[] => {
+
+  const data = param.map(item => createMenu(item));
+
+  const menuMaker = (level = 0, parentId = 0): Menu[] => {
 
     const currentMenu = data.filter(item => item.menuItemParent === parentId);
 
